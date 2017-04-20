@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: BoundedNumberTester
+Bundle-Name: BoundedNumberTester
+Bundle-Version: 0.1
+Built-By: christian
+Bundle-ManifestVersion: 2
+Bnd-LastModified: 1492706357394
+Bundle-Activator: ca.utoronto.bntester.internal.CyActivator
+Import-Package: org.cytoscape.service.util;version="[3.5,4)",org.cytos
+ cape.work;version="[3.5,4)",org.cytoscape.work.util;version="[3.5,4)"
+ ,org.osgi.framework;version="[1.5,2)"
+Created-By: Apache Maven Bundle Plugin
+Tool: Bnd-1.15.0
+Build-Jdk: 1.8.0_66
+
