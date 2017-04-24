@@ -11,6 +11,7 @@ import static org.cytoscape.work.ServiceProperties.TOOL_BAR_GRAVITY;
 
 import java.util.Properties;
 
+import org.cytoscape.application.swing.CySwingApplication;
 import org.cytoscape.service.util.AbstractCyActivator;
 import org.cytoscape.work.TaskFactory;
 import org.osgi.framework.BundleContext;
@@ -19,7 +20,10 @@ public class CyActivator extends AbstractCyActivator {
 
 	@Override
 	public void start(BundleContext bc) throws Exception {
-		TesterTaskFactory taskFactory = new TesterTaskFactory();
+		CySwingApplication swingApplication = getService(bc, CySwingApplication.class);
+		
+		TesterTaskFactory taskFactory = new TesterTaskFactory(swingApplication);
+		
 		Properties props = new Properties();
 		props.setProperty(IN_MENU_BAR, "true");
 		props.setProperty(PREFERRED_MENU, "Apps");

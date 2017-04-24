@@ -1,5 +1,9 @@
 package ca.utoronto.bntester.internal;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
+import org.cytoscape.application.swing.CySwingApplication;
 import org.cytoscape.work.AbstractTask;
 import org.cytoscape.work.TaskMonitor;
 import org.cytoscape.work.Tunable;
@@ -46,8 +50,26 @@ public class TesterTask extends AbstractTask {
 	@Tunable(description = "Bounded Double (0.0 - 1.0)", required = true, params = "slider=true")
 	public BoundedDouble bdbl01 = new BoundedDouble(0.0, 0.0, 1.0, false, false);
 
+	
+	
+	private CySwingApplication swingApplication;
+	
+	public TesterTask(CySwingApplication swingApplication) {
+		this.swingApplication = swingApplication;
+	}
+
+
 	@Override
 	public void run(TaskMonitor tm) {
-		// Nothing to do here...
+		StringBuilder sb = new StringBuilder();
+		sb.append("BoundedFloat:" + bfloat01.getValue() + " ");
+		sb.append("BoundedDouble:" + bdbl01.getValue());
+
+		JOptionPane pane = new JOptionPane(sb.toString());
+		JDialog dialog = pane.createDialog(swingApplication.getJFrame(), "Test");
+		// the line below is added to the example from the docs
+		dialog.setModal(false); // this says not to block background components
+		dialog.show();
+
 	}
 }
